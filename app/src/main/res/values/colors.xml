@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+
+    <color name="red">#F80909</color>
+    <color name="green">#4DFF00</color>
+    <color name="background_data">#ecfab6</color>
+    <color name="wight">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="title_card">#E6E8EA</color>
+    <color name="subtilte">#dc3545</color>
+
+    <color name="cat200">#FBC2CD</color>
+    <color name="cat100">#F2C2FB</color>
+    <color name="cat50">#DCC2FB</color>
+    <color name="cat20">#C2D7FB</color>
+    <color name="cat10">#C2FBEB</color>
+    <color name="cat5">#C2FBC2</color>
+    <color name="cat1">#F7FBC2</color>
+
+
+</resources>
