@@ -11,16 +11,61 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.biteam.egmoneyclac.databinding.ActivityMainBinding
+import com.google.android.gms.ads.AdListener
+import com.google.android.gms.ads.LoadAdError
+import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.analytics.ktx.analytics
+import com.google.firebase.ktx.Firebase
 
 class MainActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityMainBinding
+    private lateinit var firebaseAnalytics: FirebaseAnalytics
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         binding = ActivityMainBinding.inflate(layoutInflater)
+
+        firebaseAnalytics = Firebase.analytics
+
+
         setContentView(binding.root)
+
+
+       binding.adView.adListener = object: AdListener() {
+            override fun onAdClicked() {
+                firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_ITEM,Bundle().apply {
+                    putString("onAdClicked","onAdClicked")
+                })
+            }
+
+            override fun onAdClosed() {
+                firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_ITEM,Bundle().apply {
+                    putString("onAdClosed","onAdClosed")
+                })
+            }
+
+            override fun onAdFailedToLoad(adError : LoadAdError) {
+                // Code to be executed when an ad request fails.
+            }
+
+            override fun onAdImpression() {
+                firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_ITEM,Bundle().apply {
+                    putString("onAdImpression","onAdImpression")
+                })
+            }
+
+            override fun onAdLoaded() {
+                // Code to be executed when an ad finishes loading.
+            }
+
+            override fun onAdOpened() {
+                firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_ITEM,Bundle().apply {
+                    putString("onAdOpened","onAdOpened")
+                })
+            }
+        }
 
 
         binding.cat200.addTextChangedListener(object : TextWatcher {
@@ -28,6 +73,9 @@ class MainActivity : AppCompatActivity() {
             override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
             override fun afterTextChanged(editable: Editable) {
                 clacMoney()
+                firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_ITEM,Bundle().apply {
+                    putString("cat200","afterTextChanged")
+                })
             }
         })
         binding.cat100.addTextChangedListener(object : TextWatcher {
@@ -35,6 +83,9 @@ class MainActivity : AppCompatActivity() {
             override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
             override fun afterTextChanged(editable: Editable) {
                 clacMoney()
+                firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_ITEM,Bundle().apply {
+                    putString("cat100","afterTextChanged")
+                })
             }
         })
         binding.cat50.addTextChangedListener(object : TextWatcher {
@@ -42,6 +93,9 @@ class MainActivity : AppCompatActivity() {
             override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
             override fun afterTextChanged(editable: Editable) {
                 clacMoney()
+                firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_ITEM,Bundle().apply {
+                    putString("cat50","afterTextChanged")
+                })
             }
         })
         binding.cat20.addTextChangedListener(object : TextWatcher {
@@ -49,6 +103,9 @@ class MainActivity : AppCompatActivity() {
             override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
             override fun afterTextChanged(editable: Editable) {
                 clacMoney()
+                firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_ITEM,Bundle().apply {
+                    putString("cat20","afterTextChanged")
+                })
             }
         })
         binding.cat10.addTextChangedListener(object : TextWatcher {
@@ -56,6 +113,9 @@ class MainActivity : AppCompatActivity() {
             override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
             override fun afterTextChanged(editable: Editable) {
                 clacMoney()
+                firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_ITEM,Bundle().apply {
+                    putString("cat10","afterTextChanged")
+                })
             }
         })
         binding.cat5.addTextChangedListener(object : TextWatcher {
@@ -63,6 +123,9 @@ class MainActivity : AppCompatActivity() {
             override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
             override fun afterTextChanged(editable: Editable) {
                 clacMoney()
+                firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_ITEM,Bundle().apply {
+                    putString("cat5","afterTextChanged")
+                })
             }
         })
 
